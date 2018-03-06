@@ -3,7 +3,7 @@ node_js: stable
 
 # S: Build Lifecycle
 install:
-  - npm install
+  - npm install --production
 
 
 #before_script:
@@ -19,12 +19,9 @@ after_script:
   - git config user.email "leaferx@outlook.com"
   - git add .
   - git commit -m "Update"
-  - git push --force --quiet "https://${GH_REF}" master:master
+  - git push --force "https://github.com/LEAFERx/hexo-theme-vuetest.git" master:master
 # E: Build LifeCycle
 
 branches:
   only:
     - dev
-env:
- global:
-   - GH_REF: github.com/LEAFERx/hexo-theme-vuetest.git
