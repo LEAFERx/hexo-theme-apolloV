@@ -24,7 +24,7 @@ after_script:
 
 branches:
   only:
-    - blog-source
+    - dev
 env:
  global:
    - GH_REF: github.com/LEAFERx/hexo-theme-vuetest.git
