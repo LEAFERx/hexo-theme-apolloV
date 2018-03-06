@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <% if (path !== 'index.html') { %>
+    <meta http-equiv='refresh' content='0; /?path=<%= path.replace("/index.html", "") %>' />
+  <% } %>
+</head>
+<body>
+</body>
+</html>
