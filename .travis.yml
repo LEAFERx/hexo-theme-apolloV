@@ -1,0 +1,30 @@
+language: node_js
+node_js: stable
+
+# S: Build Lifecycle
+install:
+  - npm install
+
+
+#before_script:
+ # - npm install -g gulp
+
+script:
+  - npm run build
+
+after_script:
+  - cd ./dist
+  - git init
+  - git config user.name "LEAFERx"
+  - git config user.email "leaferx@outlook.com"
+  - git add .
+  - git commit -m "Update"
+  - git push --force --quiet "https://${GH_REF}" master:master
+# E: Build LifeCycle
+
+branches:
+  only:
+    - blog-source
+env:
+ global:
+   - GH_REF: github.com/LEAFERx/hexo-theme-vuetest.git
