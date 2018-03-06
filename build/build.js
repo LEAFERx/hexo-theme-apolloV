@@ -11,6 +11,9 @@ const webpack = require('webpack')
 const config = require('../config')
 const webpackConfig = require('./webpack.prod.conf')
 
+const gulp = require('gulp')
+const gulp_ex_replace = require('gulp-ex-replace')
+
 const spinner = ora('building for production...')
 spinner.start()
 
@@ -31,6 +34,10 @@ rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err => {
       console.log(chalk.red('  Build failed with errors.\n'))
       process.exit(1)
     }
+
+    gulp.src('./dist/layout/body.ejs')
+      .pipe(gulp_ex_replace(/=\/source\/(css|js)\//g, '=/$1/'))
+      .pipe(gulp.dest('./dist/layout'))
 
     console.log(chalk.cyan('  Build complete.\n'))
     console.log(chalk.yellow(

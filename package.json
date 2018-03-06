@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "vue": "^2.5.2",
+    "vue-content-placeholders": "^0.2.1",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {
@@ -47,6 +48,8 @@
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^1.1.4",
     "friendly-errors-webpack-plugin": "^1.6.1",
+    "gulp": "^3.9.1",
+    "gulp-ex-replace": "^0.5.8",
     "html-webpack-plugin": "^2.30.1",
     "inject-loader": "^3.0.0",
     "karma": "^1.4.1",
