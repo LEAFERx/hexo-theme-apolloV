@@ -1,7 +1,5 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import HelloWorld from '@/components/HelloWorld';
-import NotFound from '@/components/NotFound';
 
 Vue.use(Router);
 
@@ -11,7 +9,7 @@ export default new Router({
     {
       path: '/',
       name: 'HelloWorld',
-      component: HelloWorld,
+      component: () => import('@/components/HelloWorld'),
       beforeEnter: (to, from, next) => {
         if (to.query.path) {
           next(to.query.path);
@@ -23,7 +21,7 @@ export default new Router({
     {
       path: '*',
       name: 'NotFound',
-      component: NotFound,
+      component: () => import('@/components/NotFound'),
     },
   ],
 });
