@@ -1,8 +1,14 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <h1>{{ count }}</h1>
-    <button @click="increment">Click to increase</button>
+    <h1>Site Config: </h1>
+    <ul>
+      <li v-for="(value, key) in siteConfig" :key="key">{{ key }}: {{ value }}</li>
+    </ul>
+    <h1>Theme Config:</h1>
+    <ul>
+      <li v-for="(value, key) in themeConfig" :key="key">{{ key }}: {{ value }}</li>
+    </ul>
   </div>
 </template>
 
@@ -15,13 +21,11 @@ export default {
     };
   },
   computed: {
-    count() {
-      return this.$store.state.count;
+    siteConfig() {
+      return this.$store.state.siteConfig;
     },
-  },
-  methods: {
-    increment() {
-      this.$store.commit('increment');
+    themeConfig() {
+      return this.$store.state.themeConfig;
     },
   },
 };

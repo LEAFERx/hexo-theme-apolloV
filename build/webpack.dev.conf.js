@@ -64,6 +64,14 @@ const devWebpackConfig = merge(baseWebpackConfig, {
         to: config.dev.assetsSubDirectory,
         ignore: ['.*']
       }
+    ]),
+    // copy mocked api
+    new CopyWebpackPlugin([
+      {
+        from: path.resolve(__dirname, '../__mock__'),
+        to: '.',
+        ignore: ['.*']
+      }
     ])
   ]
 })

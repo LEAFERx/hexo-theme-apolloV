@@ -125,7 +125,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     new CopyWebpackPlugin([
       {
         from: path.resolve(__dirname, '../theme'),
-        to: config.build.assetsPublicDirectory,
+        to: '.',
         ignore: ['.*']
       }
     ])
