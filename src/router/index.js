@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import HelloWorld from '@/components/HelloWorld';
 import NotFound from '@/components/NotFound';
+import post from '@/components/post';
 
 Vue.use(Router);
 
@@ -19,6 +20,12 @@ export default new Router({
           next();
         }
       },
+    },
+    {
+      path: '/:year(\\d+)/:month(\\d+)/:date(\\d+)/:title/',
+      name: 'post',
+      component: post,
+      props: true,
     },
     {
       path: '*',
