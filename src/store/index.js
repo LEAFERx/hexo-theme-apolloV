@@ -26,20 +26,20 @@ const store = new Vuex.Store({
       return new Promise((resolve, reject) => {
         // get config
         Vue.resource('/api/config.json').get()
-          .then(res => new Promise((resolve1) => {
+          .then((res) => {
             commit('setConfig', {
               siteConfig: res.body.siteConfig,
               themeConfig: res.body.themeConfig,
             });
-            resolve1();
-          }))
+          })
           .then(
             // get postlist and init routes
-            Vue.resource('/api/postlist.json').get)
+            Vue.resource('/api/postlist.json').get,
+          )
           .then((res) => {
             commit('storePostlist', res.body);
-            resolve();
-          });
+          })
+          .then(resolve);
       });
     },
   },
