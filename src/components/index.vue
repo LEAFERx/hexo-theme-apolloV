@@ -9,10 +9,13 @@
     <ul>
       <li v-for="(value, key) in themeConfig" :key="key">{{ key }}: {{ value }}</li>
     </ul>
+    <router-link to="/2018/01/01/test1/">asd</router-link>
   </div>
 </template>
 
 <script>
+import '../../node_modules/spinkit/css/spinkit.css';
+
 export default {
   name: 'HelloWorld',
   data() {

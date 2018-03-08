@@ -8,13 +8,11 @@
 export default {
   name: 'post',
   data() {
-    // const p = this.$route.params;
-    const p = this;
     return {
-      msg: `post: ${p.year} : ${p.month} : ${p.date} : ${p.title}`,
+      msg: `path: ${this.path}`,
     };
   },
-  props: ['year', 'month', 'date', 'title'],
+  props: ['path'],
 };
 </script>
 

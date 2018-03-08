@@ -1,9 +1,8 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import VueResource from 'vue-resource';
+import axios from 'axios';
 
 Vue.use(Vuex);
-Vue.use(VueResource);
 
 const store = new Vuex.Store({
   state: {
@@ -22,23 +21,16 @@ const store = new Vuex.Store({
   },
   actions: {
     initialize({ commit }) {
-      // eslint-disable-next-line
-      return new Promise((resolve, reject) => {
-        // get config
-        Vue.resource('/api/config.json').get()
-          .then((res) => {
+      return new Promise((resolve) => {
+        // get config and postlist
+        axios.all([axios.get('/api/config.json'), axios.get('/api/postlist.json')])
+          .then(axios.spread((config, postlist) => {
             commit('setConfig', {
-              siteConfig: res.body.siteConfig,
-              themeConfig: res.body.themeConfig,
+              siteConfig: config.data.siteConfig,
+              themeConfig: config.data.themeConfig,
             });
-          })
-          .then(
-            // get postlist and init routes
-            Vue.resource('/api/postlist.json').get,
-          )
-          .then((res) => {
-            commit('storePostlist', res.body);
-          })
+            commit('storePostlist', postlist.data);
+          }))
           .then(resolve);
       });
     },
