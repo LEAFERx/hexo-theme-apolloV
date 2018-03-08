@@ -18,6 +18,15 @@ new Vue({
   components: { App },
   template: '<App/>',
   created: () => {
-    store.dispatch('getConfig');
+    store.dispatch('initialize').then(() => {
+      store.state.postlist.forEach(({ path }) => {
+        // eslint-disable-next-line
+        console.log(`asd`);
+        router.addRoutes({
+          path,
+          components: () => import('@/components/post'),
+        });
+      });
+    });
   },
 });

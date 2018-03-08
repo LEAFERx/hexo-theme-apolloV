@@ -18,12 +18,12 @@ export default new Router({
         }
       },
     },
-    {
-      path: '/:year(\\d+)/:month(\\d+)/:date(\\d+)/:title/',
-      name: 'post',
-      component: () => import('@/components/post'),
-      props: true,
-    },
+    // {
+    //   path: '/:year(\\d+)/:month(\\d+)/:date(\\d+)/:title/',
+    //   name: 'post',
+    //   component: () => import('@/components/post'),
+    //   props: true,
+    // },
     {
       path: '*',
       name: 'NotFound',
