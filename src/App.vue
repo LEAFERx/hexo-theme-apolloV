@@ -1,15 +1,6 @@
 <template>
   <div id="app">
-    <div v-if="this.$store.state.loading" class="loading-warp-main">
-      <div class="sk-wave loading-grid-main">
-        <div class="sk-rect sk-rect1 loading-element-main"></div>
-        <div class="sk-rect sk-rect2 loading-element-main"></div>
-        <div class="sk-rect sk-rect3 loading-element-main"></div>
-        <div class="sk-rect sk-rect4 loading-element-main"></div>
-        <div class="sk-rect sk-rect5 loading-element-main"></div>
-      </div>
-    </div>
-    <div v-else class="wrap">
+    <div class="wrap">
       <header>
         <router-link to="/" class="logo-link">
           <img :src="logoPath" alt="logo">

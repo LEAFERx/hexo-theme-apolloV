@@ -40,7 +40,7 @@ new Vue({
           component: NotFound,
         });
       router.addRoutes(routes);
-      store.commit('unsetLoading', 'main');
+      document.querySelector('.loading-warp-main').style.display = 'none';
     });
   },
 });

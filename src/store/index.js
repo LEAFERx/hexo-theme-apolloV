@@ -39,21 +39,11 @@ const store = new Vuex.Store({
     addCache(state, payload) {
       state.cache[payload.path] = payload;
     },
-    setLoading(state, type) {
-      if (type === 'main') {
-        state.loading = true;
-      }
-      if (type === 'content') {
-        state.loadingContent = true;
-      }
+    setLoading(state) {
+      state.loadingContent = true;
     },
-    unsetLoading(state, type) {
-      if (type === 'main') {
-        state.loading = false;
-      }
-      if (type === 'content') {
-        state.loadingContent = false;
-      }
+    unsetLoading(state) {
+      state.loadingContent = false;
     },
   },
   actions: {
@@ -85,7 +75,7 @@ const store = new Vuex.Store({
       if (state.cache[path]) {
         commit('setCurrent', state.cache[path]);
       } else {
-        commit('setLoading', 'content');
+        commit('setLoading');
         axios.get(`${state.root}api${path}index.json`)
           .then((res) => {
             Promise.all([
@@ -100,7 +90,7 @@ const store = new Vuex.Store({
             ]);
           })
           .then(() => {
-            commit('unsetLoading', 'content');
+            commit('unsetLoading');
           });
       }
     },
