@@ -7,24 +7,17 @@ Vue.use(Meta);
 
 export default new Router({
   mode: 'history',
-  routes: [
-    {
-      path: '/',
-      name: 'index',
-      component: () => import('@/components/index'),
-      beforeEnter: (to, from, next) => {
-        if (to.query.path) {
-          next(to.query.path);
-        } else {
-          next();
-        }
-      },
-    },
-    // {
-    //   path: '/:year(\\d+)/:month(\\d+)/:date(\\d+)/:title/',
-    //   name: 'post',
-    //   component: () => import('@/components/post'),
-    //   props: true,
-    // },
-  ],
+  base: '/',
+  routes: [],
+  scrollBehavior(to) {
+    if (to.hash) {
+      return {
+        selector: to.hash,
+      };
+    }
+    return {
+      x: 0,
+      y: 0,
+    };
+  },
 });

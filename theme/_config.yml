@@ -1,0 +1,12 @@
+menu:
+    Blog: /
+    Archive: /archives/
+    Weibo: http://weibo.com/sunchongsheng
+    GitHub: https://github.com/pinggod
+    Rss: /atom.xml
+
+favicon: logo.png
+logo: logo.png
+
+# Copyright Infomation
+startyear: 2015

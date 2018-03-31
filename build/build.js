@@ -19,7 +19,7 @@ spinner.start()
 
 rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err => {
   if (err) throw err
-  webpack(webpackConfig, (err, stats) => {
+  webpack(webpackConfig, async (err, stats) => {
     spinner.stop()
     if (err) throw err
     process.stdout.write(stats.toString({
@@ -35,9 +35,11 @@ rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err => {
       process.exit(1)
     }
 
-    gulp.src('./dist/layout/body.ejs')
-      .pipe(gulp_ex_replace(/=\/source\/(css|js)\//g, '=/$1/'))
-      .pipe(gulp.dest('./dist/layout'))
+    // Fix path in hexo
+    await gulp.src('./dist/**/*.@(js|css|ejs)')
+      .pipe(gulp_ex_replace(/\/source\//g, '/'))
+      .pipe(gulp_ex_replace(/source\//g, ''))
+      .pipe(gulp.dest('./dist/'))
 
     console.log(chalk.cyan('  Build complete.\n'))
     console.log(chalk.yellow(

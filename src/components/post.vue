@@ -1,35 +1,31 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
+  <div class="post">
+    <article class="post-block">
+      <h1 class="post-title">{{ postTitle }}</h1>
+      <div class="post-content" v-html="postContent"></div>
+    </article>
   </div>
 </template>
 
 <script>
 export default {
   name: 'post',
-  data() {
-    return {
-      msg: `path: ${this.path}`,
-    };
+  computed: {
+    postTitle() {
+      return this.$store.state.currentPost.title;
+    },
+    postContent() {
+      return this.$store.state.currentPost.content;
+    },
   },
-  props: ['path'],
+  beforeRouteEnter(to, from, next) {
+    next((vm) => {
+      vm.$store.dispatch('getPost', to.path);
+    });
+  },
+  beforeRouteLeave(to, from, next) {
+    this.$store.commit('clearCurrent');
+    next();
+  },
 };
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-</style>

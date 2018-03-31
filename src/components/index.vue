@@ -1,23 +1,27 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h1>Site Config: </h1>
-    <ul>
-      <li v-for="(value, key) in siteConfig" :key="key">{{ key }}: {{ value }}</li>
+  <section>
+    <ul class="home post-list">
+      <li v-for="post in postlist"
+          :key="post.path"
+          class="post-list-item">
+        <article class="post-block">
+          <h2 class="post-title">
+            <router-link :to="post.path" class="post-title-link">
+              {{ post.title }}
+            </router-link>
+          </h2>
+          <div class="post-info">{{ post.updated }}</div>
+          <div class="post-conte" v-html="post.excerpt"></div>
+          <router-link :to="post.path" class="read-more">...more</router-link>
+        </article>
+      </li>
     </ul>
-    <h1>Theme Config:</h1>
-    <ul>
-      <li v-for="(value, key) in themeConfig" :key="key">{{ key }}: {{ value }}</li>
-    </ul>
-    <router-link to="/2018/01/01/test1/">asd</router-link>
-  </div>
+  </section>
 </template>
 
 <script>
-import '../../node_modules/spinkit/css/spinkit.css';
-
 export default {
-  name: 'HelloWorld',
+  name: 'index',
   data() {
     return {
       msg: 'Welcome to Your Vue.js App',
@@ -30,24 +34,10 @@ export default {
     themeConfig() {
       return this.$store.state.themeConfig;
     },
+    postlist() {
+      return this.$store.state.postlist;
+    },
   },
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-</style>
