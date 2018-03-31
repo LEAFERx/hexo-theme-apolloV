@@ -1,19 +1,36 @@
 <template>
   <div id="app">
-    <div class="wrap">
+    <div v-if="this.$store.state.loading" class="loading-warp-main">
+      <div class="sk-wave loading-grid-main">
+        <div class="sk-rect sk-rect1 loading-element-main"></div>
+        <div class="sk-rect sk-rect2 loading-element-main"></div>
+        <div class="sk-rect sk-rect3 loading-element-main"></div>
+        <div class="sk-rect sk-rect4 loading-element-main"></div>
+        <div class="sk-rect sk-rect5 loading-element-main"></div>
+      </div>
+    </div>
+    <div v-else class="wrap">
       <header>
         <router-link to="/" class="logo-link">
           <img :src="logoPath" alt="logo">
         </router-link>
         <app-nav />
       </header>
-      <fade-transition>
-        <div v-if="this.$store.state.loadingContent" class="sk-rotating-plane"></div>
-      </fade-transition>
-      <fade-transition>
+      <div v-if="this.$store.state.loadingContent" class="loading-warp-content">
+        <div class="sk-wave loading-grid-content">
+          <div class="sk-rect sk-rect1 loading-element-content"></div>
+          <div class="sk-rect sk-rect2 loading-element-content"></div>
+          <div class="sk-rect sk-rect3 loading-element-content"></div>
+          <div class="sk-rect sk-rect4 loading-element-content"></div>
+          <div class="sk-rect sk-rect5 loading-element-content"></div>
+        </div>
+      </div>
+      <!--fade-transition v-elsev-enter-active-->
+      <transition name="slide-fade">
         <router-view v-if="!this.$store.state.loadingContent" class="container" />
-      </fade-transition>
+      </transition>
       <footer>
+        <paginator />
         <copyright />
       </footer>
     </div>
@@ -25,6 +42,7 @@ import '@/assets/css/apollo.css';
 
 import appNav from '@/components/partial/nav';
 import copyright from '@/components/partial/copyright';
+import paginator from '@/components/partial/paginator';
 
 import '../node_modules/spinkit/css/spinkit.css';
 
@@ -33,6 +51,7 @@ export default {
   components: {
     appNav,
     copyright,
+    paginator,
   },
   computed: {
     logoPath() {
@@ -46,3 +65,63 @@ export default {
 };
 </script>
 
+<style>
+.slide-fade-enter-active {
+  transition: all .3s ease;
+}
+.slide-fade-leave-active {
+  transition: all 0s;
+}
+.slide-fade-enter, .slide-fade-leave-to
+/* .slide-fade-leave-active for below version 2.1.8 */ {
+  transform: translateX(10px);
+  opacity: 0;
+}
+
+.loading-warp-main {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: #42b983;
+}
+
+.loading-grid-main {
+  width: 70px;
+  height: 70px;
+}
+
+.loading-element-main{
+  background-color: #ffffff !important;
+}
+
+.loading-warp-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+}
+
+@media screen and (min-height: 900px) {
+  .loading-warp-content {
+    height: 700px;
+  }
+}
+
+@media screen and (max-height: 900px) {
+  .loading-warp-content {
+    height: 450px;
+  }
+}
+
+.loading-grid-content {
+  width: 70px;
+  height: 70px;
+}
+
+.loading-element-content{
+  background-color: #42b983 !important;
+}
+</style>

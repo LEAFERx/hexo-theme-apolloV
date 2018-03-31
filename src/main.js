@@ -2,10 +2,13 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue';
 import Transitions from 'vue2-transitions';
+
+import post from '@/components/post';
+import NotFound from '@/components/NotFound';
+
 import App from './App';
 import router from './router';
 import store from './store';
-
 
 Vue.use(Transitions);
 
@@ -28,28 +31,16 @@ new Vue({
       const routes = store.state.postlist.map(({ path }) => (
         {
           path: `/${path}`,
-          component: () => import('@/components/post'),
+          component: post,
         }));
-      routes.push(
-        {
-          path: '/',
-          name: 'index',
-          component: () => import('@/components/index'),
-          beforeEnter: (to, from, next) => {
-            if (to.query.path) {
-              next(to.query.path);
-            } else {
-              next();
-            }
-          },
-        });
       routes.push(
         {
           path: '*',
           name: 'NotFound',
-          component: () => import('@/components/NotFound'),
+          component: NotFound,
         });
       router.addRoutes(routes);
+      store.commit('unsetLoading', 'main');
     });
   },
 });

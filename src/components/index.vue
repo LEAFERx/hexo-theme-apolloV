@@ -38,6 +38,11 @@ export default {
       return this.$store.state.postlist;
     },
   },
+  beforeRouteEnter(to, from, next) {
+    next((vm) => {
+      vm.$store.commit('setView', 'index');
+    });
+  },
 };
 </script>
 

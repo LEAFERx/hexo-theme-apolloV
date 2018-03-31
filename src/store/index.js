@@ -7,13 +7,14 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
   state: {
     root: null,
+    view: null,
     siteConfig: {},
     themeConfig: {},
     postlist: [],
     currentPost: {},
     cache: {},
-    loading: false,
-    loadingContent: true,
+    loading: true,
+    loadingContent: false,
   },
   mutations: {
     setRoot(state, root) {
@@ -26,6 +27,9 @@ const store = new Vuex.Store({
     storePostlist(state, payload) {
       state.postlist = payload;
     },
+    setView(state, view) {
+      state.view = view;
+    },
     setCurrent(state, payload) {
       state.currentPost = payload;
     },
@@ -34,6 +38,22 @@ const store = new Vuex.Store({
     },
     addCache(state, payload) {
       state.cache[payload.path] = payload;
+    },
+    setLoading(state, type) {
+      if (type === 'main') {
+        state.loading = true;
+      }
+      if (type === 'content') {
+        state.loadingContent = true;
+      }
+    },
+    unsetLoading(state, type) {
+      if (type === 'main') {
+        state.loading = false;
+      }
+      if (type === 'content') {
+        state.loadingContent = false;
+      }
     },
   },
   actions: {
@@ -61,10 +81,12 @@ const store = new Vuex.Store({
       });
     },
     getPost({ commit, state }, path) {
+      commit('setView', 'post');
       if (state.cache[path]) {
         commit('setCurrent', state.cache[path]);
       } else {
-        axios.get(`${state.root}api/${path}index.json`)
+        commit('setLoading', 'content');
+        axios.get(`${state.root}api${path}index.json`)
           .then((res) => {
             Promise.all([
               new Promise((r) => {
@@ -76,6 +98,9 @@ const store = new Vuex.Store({
                 r();
               }),
             ]);
+          })
+          .then(() => {
+            commit('unsetLoading', 'content');
           });
       }
     },
