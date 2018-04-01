@@ -1,2 +1,0 @@
-webpackJsonp([1],{yIG7:function(t,e,s){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n={render:function(){var t=this.$createElement,e=this._self._c||t;return e("div",{staticClass:"hello"},[e("h1",[this._v(this._s(this.msg))])])},staticRenderFns:[]},a=s("VU/8")({name:"post",data:function(){return{msg:"path: "+this.path}},props:["path"]},n,!1,null,null,null);e.default=a.exports}});
-//# sourceMappingURL=1.5104bc17708768addd5a.js.map
