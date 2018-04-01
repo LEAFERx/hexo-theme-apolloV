@@ -128,7 +128,9 @@ const webpackConfig = merge(baseWebpackConfig, {
         to: '.',
         ignore: ['.*']
       }
-    ])
+    ]),
+
+    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
   ]
 })
 
