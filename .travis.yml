@@ -26,8 +26,7 @@ jobs:
         - npm run build
       after_script:
         - mkdir demo && cd demo
-        - git clone "https://${GH_REF}"
-        - git checkout demo
+        - git clone -b demo "https://${GH_REF}"
         - npm install
         - rm -rf themes/apolloV/source themes/apolloV/layout themes/apolloV/scripts themes/apolloV/README.md
         - cp -r ../dist/layout themes/apolloV/
