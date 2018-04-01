@@ -48,8 +48,9 @@ export default {
     logoPath() {
       let path = this.$store.state.themeConfig.logo;
       if (/^(https?:\/\/|\/)/.test(path)) {
-        path = this.$store.state.root + path;
+        return path;
       }
+      path = this.$store.state.root + path;
       return path;
     },
   },
