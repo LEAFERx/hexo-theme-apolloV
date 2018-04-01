@@ -7,19 +7,38 @@ install:
 before_script:
   - npm install -g gulp
 
-script:
-  - npm run build
-
-after_script:
-  - cd ./dist
-  - git init
-  - git config user.name "LEAFERx"
-  - git config user.email "leaferx@outlook.com"
-  - git add .
-  - git commit -m "Update"
-  - git push --force "https://${GH_TOKEN}@${GH_REF}" master:master
-  # - cd ~
-  # - 'sed -i "s/base: ''/''/base: ''/vuetest/''/" src/router/index.js'
+jobs:
+  include:
+    - stage: build
+      script:
+        - npm run build
+      after_script:
+        - cd ./dist
+        - git init
+        - git config user.name "LEAFERx"
+        - git config user.email "leaferx@outlook.com"
+        - git add .
+        - git commit -m "update"
+        - git push --force "https://${GH_TOKEN}@${GH_REF}" master:master
+    - before_script:
+        - 'sed -i "s/base: ''/''/base: ''/apolloV/''/" src/router/index.js'
+      script:
+        - npm run build
+      after_script:
+        - mkdir demo && cd demo
+        - git clone "https://${GH_REF}"
+        - git checkout demo
+        - npm install
+        - rm -rf themes/apolloV/source themes/apolloV/layout themes/apolloV/scripts themes/apolloV/README.md
+        - cp -r ../dist/layout themes/apolloV/
+        - cp -r ../dist/scripts themes/apolloV/
+        - cp -r ../dist/source themes/apolloV/
+        - cp ../dist/README.md themes/apolloV/
+        - git config user.name "LEAFERx"
+        - git config user.email "leaferx@outlook.com"
+        - git add .
+        - git commit -m "update"
+        - git push --force "https://${GH_TOKEN}@${GH_REF}"
 
 branches:
   only:
@@ -27,4 +46,4 @@ branches:
 
 env:
   global:
-    - GH_REF: github.com/LEAFERx/hexo-theme-vuetest.git
+    - GH_REF: github.com/LEAFERx/hexo-theme-apolloV.git
