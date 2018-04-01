@@ -10,8 +10,8 @@
               {{ post.title }}
             </router-link>
           </h2>
-          <div class="post-info">{{ post.updated }}</div>
-          <div class="post-conte" v-html="post.excerpt"></div>
+          <div class="post-info">{{ post.date | moment('MMM DD, YYYY') }}</div>
+          <div class="post-content" v-html="post.excerpt"></div>
           <router-link :to="post.path" class="read-more">...more</router-link>
         </article>
       </li>
@@ -20,6 +20,7 @@
 </template>
 
 <script>
+
 export default {
   name: 'index',
   data() {

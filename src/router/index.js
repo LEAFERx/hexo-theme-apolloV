@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import Meta from 'vue-meta';
 
 import index from '@/components/index';
+import archives from '@/components/archives';
 
 Vue.use(Router);
 Vue.use(Meta);
@@ -22,6 +23,11 @@ export default new Router({
           next();
         }
       },
+    },
+    {
+      path: '/archives/',
+      name: 'archives',
+      component: archives,
     }],
   scrollBehavior(to) {
     if (to.hash) {

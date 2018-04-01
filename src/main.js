@@ -2,6 +2,7 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue';
 import Transitions from 'vue2-transitions';
+import moment from 'vue-moment';
 
 import post from '@/components/post';
 import NotFound from '@/components/NotFound';
@@ -11,6 +12,7 @@ import router from './router';
 import store from './store';
 
 Vue.use(Transitions);
+Vue.use(moment);
 
 Vue.config.productionTip = false;
 
@@ -30,7 +32,7 @@ new Vue({
     store.dispatch('initialize').then(() => {
       const routes = store.state.postlist.map(({ path }) => (
         {
-          path: `/${path}`,
+          path,
           component: post,
         }));
       routes.push(

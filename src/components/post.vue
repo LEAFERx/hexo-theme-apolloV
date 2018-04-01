@@ -2,6 +2,7 @@
   <div class="post">
     <article class="post-block">
       <h1 class="post-title">{{ postTitle }}</h1>
+      <div class="post-info">{{ postDate | moment('MMM DD, YYYY') }}</div>
       <div class="post-content" v-html="postContent"></div>
     </article>
   </div>
@@ -13,6 +14,9 @@ export default {
   computed: {
     postTitle() {
       return this.$store.state.currentPost.title;
+    },
+    postDate() {
+      return this.$store.state.currentPost.date;
     },
     postContent() {
       return this.$store.state.currentPost.content;

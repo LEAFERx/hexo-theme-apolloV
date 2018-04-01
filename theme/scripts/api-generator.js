@@ -15,13 +15,14 @@ function generatePostlist() {
     .get('posts')
     .filter(({ published }) => published)
     .map((post) => {
-      return _.pick(post, [
+      let data = _.pick(post, [
         'path',
         'title',
         'date',
         'updated',
         'excerpt',
       ])
+      data.path = `/${data.path}`;
       return data;
     })
     .sort((a, b) => {
