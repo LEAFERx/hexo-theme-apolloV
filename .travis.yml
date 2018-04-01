@@ -21,7 +21,7 @@ jobs:
         - git commit -m "update"
         - git push --force "https://${GH_TOKEN}@${GH_REF}" master:master
     - before_script:
-        - 'sed -i "s/base: ''/''/base: ''/apolloV/''/" src/router/index.js'
+        - 'sed -i "s!base: ''/''!base: ''/apolloV/''!" src/router/index.js'
       script:
         - npm run build
       after_script:
