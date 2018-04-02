@@ -5,8 +5,7 @@ install:
   - npm install
 
 before_script:
-  - hexo cl
-  - 'sed -i "s!GH_TOKEN!${GH_TOKEN}!" _config.yml'
+  - 'sed -i "s/GH_TOKEN/${GH_TOKEN}/" _config.yml'
 
 script:
   - hexo g -d

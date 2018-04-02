@@ -78,5 +78,5 @@ theme: apolloV
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/LEAFERx/hexo-theme-apolloV.git
+  repo: https://GH_TOKEN@github.com/LEAFERx/hexo-theme-apolloV.git
   branch: gh-pages
