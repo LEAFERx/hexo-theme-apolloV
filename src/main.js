@@ -29,20 +29,33 @@ new Vue({
     // set api root
     store.commit('setRoot', router.options.base);
     // add post routes
-    store.dispatch('initialize').then(() => {
-      const routes = store.state.postlist.map(({ path }) => (
-        {
-          path,
-          component: post,
-        }));
-      routes.push(
-        {
-          path: '*',
-          name: 'NotFound',
-          component: NotFound,
-        });
-      router.addRoutes(routes);
-      document.querySelector('.loading-warp-main').style.display = 'none';
+    store.dispatch('initialize')
+      .then(() => {
+        const routes = store.state.postlist.map(({ path }) => (
+          {
+            path,
+            component: post,
+          }));
+        routes.push(
+          {
+            path: '*',
+            name: 'NotFound',
+            component: NotFound,
+          });
+        router.addRoutes(routes);
+        const logo = document.getElementById('logo');
+        if (logo.complete) {
+          document.querySelector('.loading-warp-main').style.display = 'none';
+        } else {
+          logo.onload = () => {
+            document.querySelector('.loading-warp-main').style.display = 'none';
+          };
+        }
+      });
+  },
+  updated: () => {
+    document.querySelectorAll('img').map((img) => {
+      console.log(img);
     });
   },
 });

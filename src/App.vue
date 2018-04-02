@@ -3,7 +3,7 @@
     <div class="wrap">
       <header>
         <router-link to="/" class="logo-link">
-          <img :src="logoPath" alt="logo">
+          <img id="logo" :src="logoPath" alt="logo">
         </router-link>
         <app-nav />
       </header>

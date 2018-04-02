@@ -8,7 +8,7 @@ import archives from '@/components/archives';
 Vue.use(Router);
 Vue.use(Meta);
 
-export default new Router({
+const router = new Router({
   mode: 'history',
   base: '/',
   routes: [
@@ -41,3 +41,5 @@ export default new Router({
     };
   },
 });
+
+export default router;
