@@ -2,7 +2,7 @@ menu:
     Blog: /
     Archive: /archives/
 
-favicon: /logo.png
-logo: /logo.png
+favicon: logo.png
+logo: logo.png
 
 startyear: 2018
