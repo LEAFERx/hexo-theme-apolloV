@@ -4,12 +4,12 @@ node_js: stable
 install:
   - npm install
 
-before_script:
-  - 'sed -i "s/GH_TOKEN/${GH_TOKEN}/" _config.yml'
-
 script:
-  - hexo g -d
+  - hexo g 
 
+after_script:
+  - 'sed -i "s/GH_TOKEN/${GH_TOKEN}/" _config.yml'
+  - hexo d
 
 branches:
   only:
