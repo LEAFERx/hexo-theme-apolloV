@@ -20,6 +20,7 @@
 </template>
 
 <script>
+import imgLoadAni from '@/utils/img-load-animation';
 
 export default {
   name: 'index',
@@ -44,6 +45,7 @@ export default {
       vm.$store.commit('setView', 'index');
     });
   },
+  updated: imgLoadAni,
 };
 </script>
 

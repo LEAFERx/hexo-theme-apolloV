@@ -9,6 +9,8 @@
 </template>
 
 <script>
+import imgLoadAni from '@/utils/img-load-animation';
+
 export default {
   name: 'post',
   computed: {
@@ -31,5 +33,6 @@ export default {
     this.$store.commit('clearCurrent');
     next();
   },
+  updated: imgLoadAni,
 };
 </script>

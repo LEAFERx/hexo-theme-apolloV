@@ -57,6 +57,12 @@ export default {
 </script>
 
 <style>
+.img-load-animation {
+  display: flex;
+  align-items: center;
+  height: 150px;
+}
+
 .slide-fade-enter-active {
   transition: all .3s ease;
 }
