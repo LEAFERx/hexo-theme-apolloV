@@ -80,3 +80,5 @@ deploy:
   type: git
   repo: https://GH_TOKEN@github.com/LEAFERx/hexo-theme-apolloV.git
   branch: gh-pages
+  name: LEAFERx
+  email: leaferx@outlook.com
