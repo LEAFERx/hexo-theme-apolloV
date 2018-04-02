@@ -16,7 +16,6 @@
           <div class="sk-rect sk-rect5 loading-element-content"></div>
         </div>
       </div>
-      <!--fade-transition v-elsev-enter-active-->
       <transition name="slide-fade">
         <router-view v-if="!this.$store.state.loadingContent" class="container" />
       </transition>
@@ -61,11 +60,12 @@ export default {
 .slide-fade-enter-active {
   transition: all .3s ease;
 }
+
 .slide-fade-leave-active {
   transition: all 0s;
 }
-.slide-fade-enter, .slide-fade-leave-to
-/* .slide-fade-leave-active for below version 2.1.8 */ {
+
+.slide-fade-enter, .slide-fade-leave-to {
   transform: translateX(10px);
   opacity: 0;
 }
