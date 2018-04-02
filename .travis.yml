@@ -1,0 +1,21 @@
+language: node_js
+node_js: stable
+
+install:
+  - npm install
+
+before_script:
+  - hexo cl
+  - 'sed -i "s!GH_TOKEN!${GH_TOKEN}" _config.yml'
+
+script:
+  - hexo g -d
+
+
+branches:
+  only:
+    - demo
+
+cache:
+  directories:
+    - node_modules

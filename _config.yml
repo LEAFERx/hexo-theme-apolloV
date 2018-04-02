@@ -9,12 +9,11 @@ description:
 author: LEAFERx
 language: zh-CN
 timezone:
-avatar: /images/avatar.jpg
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://leaferx.online
-root: /vuetest/
+url: https://leaferx.online/hexo-theme-apolloV
+root: /hexo-theme-apolloV/
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 
@@ -78,4 +77,6 @@ theme: apolloV
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-
+  type: git
+  repo: https://github.com/LEAFERx/hexo-theme-apolloV.git
+  branch: gh-pages
