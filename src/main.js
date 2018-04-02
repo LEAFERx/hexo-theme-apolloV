@@ -53,9 +53,4 @@ new Vue({
         }
       });
   },
-  updated: () => {
-    document.querySelectorAll('img').map((img) => {
-      console.log(img);
-    });
-  },
 });
