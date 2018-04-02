@@ -16,7 +16,7 @@ export default {
       return this.$store.state.currentPost.title;
     },
     postDate() {
-      return this.$store.state.currentPost.date;
+      return this.$store.state.currentPost.date ? this.$store.state.currentPost.date : new Date();
     },
     postContent() {
       return this.$store.state.currentPost.content;
