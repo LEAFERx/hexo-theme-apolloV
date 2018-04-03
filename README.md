@@ -1,30 +1,15 @@
-# hexo-theme-vuetest
+# hexo-theme-apolloV
 
-> A Hexo theme using vue
+> A single page version of [hexo-theme-apollo](https://github.com/pinggod/hexo-theme-apollo) using [Vue.js](https://github.com/vuejs/vue)
 
-## Build Setup
+live demo: https://leaferx.online/hexo-theme-apolloV/
 
-``` bash
-# install dependencies
-npm install
+theme files are in the `master` branch
 
-# serve with hot reload at localhost:8080
-npm run dev
+if your site is put in a subdirectory, follow instructions above:
 
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-
-# run unit tests
-npm run unit
-
-# run e2e tests
-npm run e2e
-
-# run all tests
-npm test
-```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+- clone `dev` branch
+- open `/src/router/index.js`
+- change `base: '/'` to `base: '/yoursubdir/'`
+- run `npm install && npm run build`
+- find your theme files in `.dist`
