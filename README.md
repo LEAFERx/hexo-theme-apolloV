@@ -6,10 +6,10 @@ live demo: https://leaferx.online/hexo-theme-apolloV/
 
 theme files are in the `master` branch
 
-if your site is put in a subdirectory, follow instructions above:
+if your site is put in a subdirectory, follow instructions:
 
 - clone `dev` branch
 - open `/src/router/index.js`
 - change `base: '/'` to `base: '/yoursubdir/'`
 - run `npm install && npm run build`
-- find your theme files in `.dist`
+- find your theme files in `/dist`
