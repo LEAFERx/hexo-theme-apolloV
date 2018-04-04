@@ -107,8 +107,8 @@ body {
 }
 
 .loading-grid-main {
-  width: 70px;
-  height: 70px;
+  width: 120px;
+  height: 100px;
 }
 
 .loading-element-main{
