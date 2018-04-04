@@ -57,6 +57,26 @@ export default {
 </script>
 
 <style>
+body {
+  overflow-y: scroll;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+  border-radius: 2px;
+  background-color: #ebebeb;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #ebebeb;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 2px;
+  background-color: #b2b2b2;
+}
+
 .img-load-animation {
   display: flex;
   align-items: center;
