@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import '@/assets/css/apollo.css';
+import '@/assets/scss/apollo.scss';
 
 import appNav from '@/components/partial/nav';
 import copyright from '@/components/partial/copyright';
