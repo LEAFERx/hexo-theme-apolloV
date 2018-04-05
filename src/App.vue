@@ -28,6 +28,7 @@
 </template>
 
 <script>
+import 'normalize.css';
 import '@/assets/scss/apollo.scss';
 
 import appNav from '@/components/partial/nav';
