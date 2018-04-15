@@ -1,0 +1,12 @@
+<% if (path !== 'index.html') { -%>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv='refresh' content='0; <%= config.root %>?path=<%= path.replace("/index.html", "/") %>' />
+</head>
+<body>
+</body>
+</html>
+<% } else { -%>
+<%- partial('body') -%>
+<% } -%>
